@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>梁倩玲</title>
+    <!-- 引入刚刚下载的 ECharts 文件 -->
+    <script src="js/echarts.js"></script>
+  </head>
+  <body>
+     <!-- 为定义了宽高 -->
+    <div id="main" style="height: 400px;width: 600px;"></div>
+    <script type="text/javascript">
+        //基于准备好的dom，初始化实例
+        var myChart = echarts.init(document.getElementById('main'));
+        //指定图表的配置项和数据
+        var option={
+            title: {
+                text: '会使用哪些预支方式',
+    subtext: '预支方式的具体情况'
+  },
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      type: 'shadow'
+    },
+    formatter: function (params) {
+      var tar = params[1];
+      return tar.name + '<br/>' + tar.seriesName + ' : ' + tar.value;
+    }
+  },
+  grid: {
+    left: '3%',
+    right: '4%',
+    bottom: '3%',
+    containLabel: true
+  },
+  xAxis: {
+    type: 'category',
+    splitLine: { show: false },
+    data: ['从不', '花呗', '借呗', '信用卡', '其他']
+  },
+  yAxis: {
+    type: 'value'
+  },
+  series: [
+    {
+      name: 'Placeholder',
+      type: 'bar',
+      stack: 'Total',
+      itemStyle: {
+        borderColor: 'transparent',
+        color: 'transparent'
+      },
+      emphasis: {
+        itemStyle: {
+          borderColor: 'transparent',
+          color: 'transparent'
+        }
+      },
+      data: [0, 75, 40, 20, 30]
+    },
+    {
+      name: 'Life Cost',
+      type: 'bar',
+      stack: 'Total',
+      label: {
+        show: true,
+        position: 'inside'
+      },
+      data: [70, 14, 5, 5, 9]
+    }
+  ]
+                        };
+        //使用刚刚指定的配置项和数据显示图表
+        myChart.setOption(option);
+    </script>
+  </body>
+</html>
